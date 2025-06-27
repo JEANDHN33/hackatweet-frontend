@@ -9,6 +9,9 @@ function SignIn() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
 
+  // Configuration de l'API URL
+  const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3000';
+
   // Redirect to /home if logged in
   const router = useRouter();
   if (user.token) {
@@ -19,7 +22,8 @@ function SignIn() {
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-    fetch('http://localhost:3000/users/signin', {
+    // ✅ MODIFIÉ : Utilisation de la variable d'environnement
+    fetch(`${API_BASE_URL}/users/signin`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
