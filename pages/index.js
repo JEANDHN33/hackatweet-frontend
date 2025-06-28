@@ -13,3 +13,4 @@ function Index() {
 }
 
 export default Index;
+// Test CI/CD automatique - Sat Jun 28 10:06:05 CEST 2025
